@@ -1,0 +1,27 @@
+import logging
+from config import SUDOERS  # sudo user IDs list
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+    datefmt="%d-%b-%y %H:%M:%S",
+    handlers=[
+        logging.FileHandler("log.txt"),
+        logging.StreamHandler(),
+    ],
+)
+
+logging.getLogger("httpx").setLevel(logging.ERROR)
+logging.getLogger("pyrogram").setLevel(logging.ERROR)
+logging.getLogger("pytgcalls").setLevel(logging.ERROR)
+logging.getLogger("pymongo").setLevel(logging.ERROR)
+logging.getLogger("ntgcalls").setLevel(logging.ERROR)
+
+
+def LOGGER(name: str):
+    return logging.getLogger(name)
+
+
+def SUDO_LOG(user_id: int, message: str):
+    if user_id in SUDOERS:
+        LOGGER("SUDOERS").info(message)
