@@ -30,7 +30,7 @@ yt-dlp-ejs==0.8.0
 kurigram
 ddgs
 lexica-api==1.4.7
-httpx==0.27.0
+httpx==0.28.1
 lyricsgenius==3.0.1
 spotipy
 SafoneAPI
